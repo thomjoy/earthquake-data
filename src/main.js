@@ -5,6 +5,14 @@ var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 
 var formatDate = d3.time.format("%Y-%m-%d");
 
+// use when cals are on white bg
+var colorsWhite = ["#fff", "#ffe2e0", "#ffc1be", "#ffa19c", "#ff817a",
+                    "#ff4136", "#ff2114", "#f10d00", "#f10d00", "#cf0b00",
+                    "#ad0900"];
+
+var colorsRed = ["#ff817a", "#ff6158", "#ff6158", "#ff4136", "#ff2014",
+                  "#f10d00", "#cf0b00", "#ad0900", "#8b0700", "#690600"];
+
 d3.csv('data/eq-data.csv', function(csvData) {
 
   // Set up our root element
@@ -25,10 +33,7 @@ d3.csv('data/eq-data.csv', function(csvData) {
   // Create a color scale from 0-10
   var scale = d3.scale.ordinal()
                 .domain([0, 10])
-                .range([
-                  "#fff", "#ffe2e0", "#ffc1be", "#ffa19c", "#ff817a",
-                  "#ff4136", "#ff2114", "#f10d00", "#f10d00", "#cf0b00",
-                  "#ad0900"].reverse());
+                .range(colorsRed);
 
   // Build Calendar
   nested.forEach(function(month) {
