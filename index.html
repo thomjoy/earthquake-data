@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Earthquake Data Visualisation</title>
+    <meta name="author" content="Thom Joy">
+    <meta name="description" content="Earthquake visualisation data">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/mnml.min.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+
+    <style>
+      header {
+        padding: 20px;
+      }
+      h1 {
+        font-family: 'Montserrat';
+        text-transform: uppercase;
+        font-size: 3rem;
+        margin: 0;
+        color: #fff;
+      }
+      p {
+        font-family: 'PT Sans Narrow';
+        color: #ffc1be;
+        margin: 0;
+        margin-bottom: 2%;
+      }
+      cite a { display: block; color: #ffc1be; font-size: 14px; }
+      #dates-container {
+        overflow: hidden;
+        width: auto;
+      }
+      #dates-container .month {
+        overflow: hidden;
+        float: left;
+        margin: 10px;
+        margin-left: 0px;
+        width: 86px;
+        height: auto;
+      }
+      #dates-container .month-header {
+        font-family: 'PT Sans Narrow';
+        display: block;
+        font-size: 12px;
+        margin-bottom: 3px;
+        color: #fff;
+      }
+      #dates-container .month .eq-date {
+        float: left;
+        margin: 1px;
+        height: 10px;
+        width: 10px;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-red">
+      <h1>Australian Earthquake Data</h1>
+      <p>Data from March 2014 - March 2015
+      <cite><a href="http://www.ga.gov.au/earthquakes/searchQuake.do">Geoscience Australia</a></cite>
+      </p>
+
+      <div id="dates-container"></div>
+  </header>
+
+  <!-- JS -->
+  <script src='jspm_packages/traceur.js'></script>
+  <script src='jspm_packages/es6-module-loader.js'></script>
+  <script src='jspm_packages/system.js'></script>
+  <script src='config.js'></script>
+  <script>
+    System.import('src/main');
+  </script>
+
+  </body>
+</html>
