@@ -13,6 +13,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.4",
     "d3": "github:mbostock/d3@3.5.5",
     "jquery": "github:components/jquery@2.1.3",
+    "mapbox.js": "npm:mapbox.js@2.1.6",
     "systemjs": "npm:systemjs@0.15.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -79,6 +80,9 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "github:jspm/nodelibs-zlib@0.1.0": {
+      "browserify-zlib": "npm:browserify-zlib@0.1.4"
     },
     "npm:acorn-babel@0.11.1-38": {
       "process": "github:jspm/nodelibs-process@0.1.1"
@@ -191,6 +195,14 @@ System.config({
       "parse-asn1": "npm:parse-asn1@2.0.0",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
+    "npm:browserify-zlib@0.1.4": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "pako": "npm:pako@0.2.5",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "readable-stream": "npm:readable-stream@1.1.13",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:buffer@3.1.2": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.4",
@@ -255,6 +267,10 @@ System.config({
     },
     "npm:core-util-is@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:corslite@0.0.6": {
+      "http": "github:jspm/nodelibs-http@1.7.1",
+      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:create-ecdh@2.0.0": {
       "bn.js": "npm:bn.js@1.3.0",
@@ -432,6 +448,15 @@ System.config({
     "npm:js-tokens@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
+    "npm:leaflet@0.7.3": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "crypto": "github:jspm/nodelibs-crypto@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "util": "github:jspm/nodelibs-util@0.1.0",
+      "zlib": "github:jspm/nodelibs-zlib@0.1.0"
+    },
     "npm:leven@1.0.1": {
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
@@ -441,6 +466,15 @@ System.config({
     },
     "npm:lodash@3.5.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:mapbox.js@2.1.6": {
+      "corslite": "npm:corslite@0.0.6",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "leaflet": "npm:leaflet@0.7.3",
+      "mustache": "npm:mustache@0.7.3",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "sanitize-caja": "npm:sanitize-caja@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:meow@3.1.0": {
       "camelcase-keys": "npm:camelcase-keys@1.0.0",
@@ -470,6 +504,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
+    "npm:mustache@0.7.3": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
     "npm:once@1.3.1": {
       "wrappy": "npm:wrappy@1.0.1"
     },
@@ -481,6 +518,14 @@ System.config({
       "mkdirp": "npm:mkdirp@0.5.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "xtend": "npm:xtend@4.0.0"
+    },
+    "npm:pako@0.2.5": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "util": "github:jspm/nodelibs-util@0.1.0",
+      "zlib": "github:jspm/nodelibs-zlib@0.1.0"
     },
     "npm:parse-asn1@2.0.0": {
       "asn1.js": "npm:asn1.js@1.0.3",
@@ -597,6 +642,9 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:sanitize-caja@0.1.2": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:semver@2.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.1"

@@ -37,6 +37,7 @@
       "Caged/d3-tip": "github:Caged/d3-tip@^0.6.6",
       "bootstrap": "github:twbs/bootstrap@^3.3.4",
       "jquery": "github:components/jquery@^2.1.3",
+      "mapbox.js": "npm:mapbox.js@^2.1.6",
       "systemjs": "npm:systemjs@^0.15.0"
     }
   }
