@@ -9,7 +9,10 @@ System.config({
 
 System.config({
   "map": {
+    "Caged/d3-tip": "github:Caged/d3-tip@0.6.6",
+    "bootstrap": "github:twbs/bootstrap@3.3.4",
     "d3": "github:mbostock/d3@3.5.5",
+    "jquery": "github:components/jquery@2.1.3",
     "systemjs": "npm:systemjs@0.15.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
