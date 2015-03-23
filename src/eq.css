@@ -68,4 +68,27 @@ cite a { display: block; color: #ffc1be; font-size: 14px; }
   line-height: 12px;
 }
 
-#map { width: 100%; height: auto; min-height: 520px; }
+#filter { display: none; width: 100%; height: auto; padding: 10px 20px; overflow: hidden; }
+#filter label { float: left; margin-right: 10px; font-family: 'PT Sans Narrow'; font-size: 16px; font-weight: normal; }
+#filter input[type="range"] { width: 40%; height: 24px; float: left; margin-right: 10px; }
+::-webkit-slider-thumb, ::-moz-range-thumb, ::-ms-thumb {
+  -webkit-appearance: none;
+  background-color: #666;
+  width: 10px;
+  height: 20px;
+}
+#filter #mag-value {
+  float: left;
+  width: 70px;
+  padding: 4px 2px;
+  text-align: center;
+  line-height: 1em;
+  font-weight: bold;
+  border: 1px solid #111;
+}
+
+#map {
+  width: 100%;
+  height: auto;
+  min-height: 520px;
+}

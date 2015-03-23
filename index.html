@@ -29,6 +29,25 @@
       <div id="dates-container"></div>
   </header>
 
+  <div id="filter" class="bg-white">
+    <label class="red">Filter by Magnitude</label>
+    <input id="mag-slider" type="range" min=0 max=10 value=1 step=".1" list="magnitudes" />
+    <datalist id="magnitudes">
+      <option>0</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+    </datalist>
+    <div id="mag-value" class="black">Mag 1</div>
+  </div>
+
   <div id="map"></div>
 
   <!-- JS -->

@@ -13,20 +13,57 @@ var colorsWhite = ["#fff", "#ffe2e0", "#ffc1be", "#ffa19c", "#ff817a",
                     "#ff4136", "#ff2114", "#f10d00", "#f10d00", "#cf0b00",
                     "#ad0900"];
 
+var featureLayer;
+
+
+$('#mag-slider').on('input', function(evt) {
+  var magFilter = parseFloat(evt.target.value, 10);
+  featureLayer.setFilter(function(feature, val) {
+    return parseFloat(feature.properties.Magnitude, 10) >= magFilter;
+  })
+
+  $('#mag-value').html("Mag " + magFilter);
+});
+
 // Fetch our GeoJson
 Promise.resolve($.ajax('data/eq-data.json')).then(function(data) {
-  L.geoJson(data, {
-      pointToLayer: function(feature, latlng) {
-          return L.circleMarker(latlng, {
-              // Here we use the `count` property in GeoJSON verbatim: if it's
-              // to small or two large, we can use basic math in Javascript to
-              // adjust it so that it fits the map better.
-              //feature.properties.count
-              radius: 1 * feature.properties.Magnitude,
-              color: colorsWhite[Math.ceil(1 * feature.properties.Magnitude)],
-              fill: '#ff817a'
-          })
-      }
-  }).addTo(map);
 
-})
+  // Store Data in JS DB?
+  // Meteor, Forerunner?
+
+  // If we want to filter circle using properties of the geojson data
+  // we need to use L.mapbox.featureLayer
+  // and the setFilter function.
+
+  // Create a slider to filter by Magnitude.
+  featureLayer = L.mapbox.featureLayer(data, {
+      pointToLayer: function(feature, latlng) {
+        var c = L.circleMarker(latlng, {
+          radius: 1 * feature.properties.Magnitude,
+          weight: 1,
+          opacity: 0.8,
+          stroke: true,
+          //fillColor: colorsWhite[Math.ceil(1 * feature.properties.Magnitude)],
+          color: colorsWhite[Math.ceil(1 * feature.properties.Magnitude)],
+          fillOpacity: 0.2
+        });
+
+        c.bindPopup(feature.properties.Magnitude);
+        return c;
+      },
+
+      // ARGH, this needs to be passed in order for the circleMarker styles to be added.
+      style: {},
+
+      filter: function(feature, val) {
+        var filterVal = val || 0;
+        return parseInt(feature.properties.Magnitude, 10) >= filterVal;
+      }
+  });
+
+  featureLayer.addTo(map);
+});
+
+map.on('ready', function(evt) {
+  $('#filter').slideDown();
+});
