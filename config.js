@@ -14,6 +14,7 @@ System.config({
     "d3": "github:mbostock/d3@3.5.5",
     "jquery": "github:components/jquery@2.1.3",
     "mapbox.js": "npm:mapbox.js@2.1.6",
+    "pubsub-js": "npm:pubsub-js@1.5.2",
     "systemjs": "npm:systemjs@0.15.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -565,6 +566,9 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "parse-asn1": "npm:parse-asn1@3.0.0",
       "randombytes": "npm:randombytes@2.0.1"
+    },
+    "npm:pubsub-js@1.5.2": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.1"

@@ -44,7 +44,9 @@ cite a { display: block; color: #ffc1be; font-size: 14px; }
   height: 12px;
   width: 12px;
   background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid transparent;
 }
+#dates-container .month .eq-date.active { border: 1px solid #fff; }
 
 #scale {
   width: auto;
@@ -70,7 +72,7 @@ cite a { display: block; color: #ffc1be; font-size: 14px; }
 
 #filter { display: none; width: 100%; height: auto; padding: 10px 20px; overflow: hidden; }
 #filter label { float: left; margin-right: 10px; font-family: 'PT Sans Narrow'; font-size: 16px; font-weight: normal; }
-#filter input[type="range"] { width: 40%; height: 24px; float: left; margin-right: 10px; }
+#filter input[type="range"] { width: 30%; height: 24px; float: left; margin-right: 10px; }
 ::-webkit-slider-thumb, ::-moz-range-thumb, ::-ms-thumb {
   -webkit-appearance: none;
   background-color: #666;
@@ -79,12 +81,13 @@ cite a { display: block; color: #ffc1be; font-size: 14px; }
 }
 #filter #mag-value {
   float: left;
-  width: 70px;
+  width: 55px;
   padding: 4px 2px;
   text-align: center;
   line-height: 1em;
   font-weight: bold;
   border: 1px solid #001f3f;
+  font-family: 'PT Sans Narrow';
 }
 
 #map {
@@ -92,3 +95,8 @@ cite a { display: block; color: #ffc1be; font-size: 14px; }
   height: auto;
   min-height: 520px;
 }
+
+.leaflet-popup-content-wrapper { background-color: #FF4136; }
+.leaflet-popup-content { font-family: 'PT Sans Narrow'; color: #fff; }
+.leaflet-popup-tip { border-top-color: #FF4136; }
+.popup-mag { font-size: 21px; }

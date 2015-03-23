@@ -1,6 +1,7 @@
-var d3 = require('d3'),
-    $ = require('jquery'),
-    tooltip = require('bootstrap-tooltip');
+import PubSub from 'pubsub-js';
+import d3 from 'd3';
+import $ from 'jquery';
+import tooltip from 'bootstrap-tooltip';
 
 // Set up our root element
 var container = d3.select("#dates-container");
@@ -94,7 +95,12 @@ d3.csv('data/eq-data.csv', function(csvData) {
         .attr("data-toggle", "tooltip")
         .attr("data-placement", "top")
         .attr("id", function(d, i) { return formatDate(d); })
-        .on('mouseover', function(d) { $(this).tooltip(); });
+        .on('mouseover', function(d) { $(this).tooltip(); })
+        .on('click', function(d) {
+          $('.active').removeClass('active');
+          $(this).toggleClass('active');
+          PubSub.publish('map.filter.date', {filterDate: formatDate(d)});
+        });
   });
 
 $(function () {
