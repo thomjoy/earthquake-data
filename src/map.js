@@ -38,14 +38,15 @@ Promise.resolve($.ajax('data/eq-data.json')).then(function(data) {
   // Create a slider to filter by Magnitude.
   featureLayer = L.mapbox.featureLayer(data, {
       pointToLayer: function(feature, latlng) {
+        var mag = parseFloat(feature.properties.Magnitude, 10);
         var c = L.circleMarker(latlng, {
-          radius: 1 * feature.properties.Magnitude,
+          radius: (Math.log(mag)) * mag,
           weight: 1,
-          opacity: 0.8,
+          opacity: 0.5,
           stroke: true,
           //fillColor: colorsWhite[Math.ceil(1 * feature.properties.Magnitude)],
-          color: colorsWhite[Math.ceil(1 * feature.properties.Magnitude)],
-          fillOpacity: 0.2
+          color: colorsWhite[Math.ceil(1 * mag)],
+          fillOpacity: 0.3
         });
 
         c.bindPopup(feature.properties.Magnitude);
