@@ -25,8 +25,9 @@ var colorsRed = ["#ff4136", "#ff2014", "#f10d00", "#cf0b00", "#ad0900",
 // i.e. how many earthquakes in dataSet have a 'UTC Date' of 2015-03-20?
 var filterFn = function(d, dataSet) {
   var id = formatDate(d),
-      num = dataSet.filter(function(item) { return id == item['UTC Date']; }).length;
-  return num;
+      items = dataSet.filter(function(item) { return id == item['UTC Date']; });
+
+  return items;
 }
 
 // Create a color scale from 0-10
@@ -90,8 +91,8 @@ d3.csv('data/eq-data.csv', function(csvData) {
       .enter()
       .append("div")
         .attr("class", "eq-date")
-        .style("background-color", function(d) { return scale(filterFn(d, csvData)); })
-        .attr("title", function(d) { return filterFn(d, csvData) + " quakes on " + formatDate(d); })
+        .style("background-color", function(d) { return scale((filterFn(d, csvData)).length); })
+        .attr("title", function(d) { return (filterFn(d, csvData)).length + " quakes on " + formatDate(d); })
         .attr("data-toggle", "tooltip")
         .attr("data-placement", "top")
         .attr("id", function(d, i) { return formatDate(d); })
@@ -99,7 +100,9 @@ d3.csv('data/eq-data.csv', function(csvData) {
         .on('click', function(d) {
           $('.active').removeClass('active');
           $(this).toggleClass('active');
-          PubSub.publish('map.filter.date', {filterDate: formatDate(d)});
+
+          PubSub.publish('map.filter.date', { filterDate: formatDate(d) });
+          PubSub.publish('filter.update', { quakes: filterFn(d, csvData), date: formatDate(d) });
         });
   });
 
@@ -109,4 +112,9 @@ $(function () {
     animation: false
   });
 });
+});
+
+PubSub.subscribe('filter.update', (msg, data) => {
+  var htmlString = data.quakes.length + ' Earthquakes on <span class="date">' + data.date + '</span>'
+  $('#num-quakes').html(htmlString)
 });

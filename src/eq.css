@@ -70,25 +70,31 @@ cite a { display: block; color: #ffc1be; font-size: 14px; }
   line-height: 12px;
 }
 
-#filter { display: none; width: 100%; height: auto; padding: 10px 20px; overflow: hidden; }
-#filter label { float: left; margin-right: 10px; font-family: 'PT Sans Narrow'; font-size: 16px; font-weight: normal; }
-#filter input[type="range"] { width: 30%; height: 24px; float: left; margin-right: 10px; }
-::-webkit-slider-thumb, ::-moz-range-thumb, ::-ms-thumb {
+#filter { display: none; width: 100%; height: 45px; overflow: hidden; }
+#filter .container { width: 50%; float: left; padding: 10px 20px; }
+#filter .container:first-child { border-right: 1px solid #ccc; }
+.container label { float: left; margin-right: 10px; font-family: 'PT Sans Narrow'; font-size: 16px; font-weight: normal; }
+.container input[type="range"] { width: 60%; height: 24px; float: left; margin-right: 10px; }
+.container ::-webkit-slider-thumb, ::-moz-range-thumb, ::-ms-thumb {
   -webkit-appearance: none;
   background-color: #666;
   width: 10px;
   height: 20px;
 }
-#filter #mag-value {
+.container #mag-value {
   float: left;
   width: 55px;
+  margin: 0;
   padding: 4px 2px;
   text-align: center;
   line-height: 1em;
   font-weight: bold;
-  border: 1px solid #001f3f;
+  border: 1px solid rgb(37, 2, 0);
   font-family: 'PT Sans Narrow';
 }
+
+.container #num-quakes { font-size: 21px; font-family: 'PT Sans Narrow'; font-weight: bold; line-height: 1.2em; color: rgb(37, 2, 0); }
+.container #num-quakes .date { color: rgb(37, 2, 0); }
 
 #map {
   width: 100%;
