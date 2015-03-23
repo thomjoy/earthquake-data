@@ -9,6 +9,10 @@ var map = L.mapbox.map('map', 'thomjoy1984.lhfb140o', {
   zoomControl: true
 });
 
+var colorsWhite = ["#fff", "#ffe2e0", "#ffc1be", "#ffa19c", "#ff817a",
+                    "#ff4136", "#ff2114", "#f10d00", "#f10d00", "#cf0b00",
+                    "#ad0900"];
+
 // Fetch our GeoJson
 Promise.resolve($.ajax('data/eq-data.json')).then(function(data) {
   L.geoJson(data, {
@@ -18,8 +22,9 @@ Promise.resolve($.ajax('data/eq-data.json')).then(function(data) {
               // to small or two large, we can use basic math in Javascript to
               // adjust it so that it fits the map better.
               //feature.properties.count
-              radius: 2,
-              color: '#ffc1be'
+              radius: 1 * feature.properties.Magnitude,
+              color: colorsWhite[Math.ceil(1 * feature.properties.Magnitude)],
+              fill: '#ff817a'
           })
       }
   }).addTo(map);

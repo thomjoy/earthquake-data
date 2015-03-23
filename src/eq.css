@@ -42,4 +42,16 @@ cite a { display: block; color: #ffc1be; font-size: 14px; }
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-#map { width: 100%; height: auto; min-height: 500px; }
+#scale {
+  width: auto;
+  height: 20px;
+  overflow: hidden;
+}
+
+#scale .scale-item {
+  width: 10px;
+  height: 10px;
+  float: left;
+}
+
+#map { width: 100%; height: auto; min-height: 520px; }
