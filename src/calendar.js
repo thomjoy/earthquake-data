@@ -37,12 +37,22 @@ var scaleContainer = container
                       .append("div")
                       .attr("id", "scale");
 
+scaleContainer
+  .append("div")
+    .attr("class", "scale-desc")
+    .text("low")
+
 d3.range(0, 10).forEach(function(scaleValue) {
   scaleContainer
     .append("div")
-    .attr("class", "scale-item")
-    .style("background-color", function() { return colorsRed[scaleValue]; })
+      .attr("class", "scale-item")
+      .style("background-color", function() { return colorsRed[scaleValue]; })
 });
+
+scaleContainer
+  .append("div")
+    .attr("class", "scale-desc")
+    .text("high")
 
 // Fetch the data
 d3.csv('data/eq-data.csv', function(csvData) {
@@ -80,7 +90,7 @@ d3.csv('data/eq-data.csv', function(csvData) {
       .append("div")
         .attr("class", "eq-date")
         .style("background-color", function(d) { return scale(filterFn(d, csvData)); })
-        .attr("title", function(d) { return filterFn(d, csvData); })
+        .attr("title", function(d) { return filterFn(d, csvData) + " quakes on " + formatDate(d); })
         .attr("data-toggle", "tooltip")
         .attr("data-placement", "top")
         .attr("id", function(d, i) { return formatDate(d); })
