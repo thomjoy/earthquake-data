@@ -1,6 +1,7 @@
 header {
   padding: 20px;
 }
+
 h1 {
   font-family: 'Montserrat';
   text-transform: uppercase;
@@ -8,13 +9,16 @@ h1 {
   margin: 0;
   color: #fff;
 }
+
 p {
   font-family: 'PT Sans Narrow';
   color: #ffc1be;
   margin: 0;
   margin-bottom: 2%;
 }
+
 cite a { display: block; color: #ffc1be; font-size: 14px; }
+
 #dates-container {
   overflow: hidden;
   width: auto;
