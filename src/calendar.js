@@ -59,6 +59,7 @@ scaleContainer
 // Fetch the data
 d3.csv('data/eq-data.csv', function(csvData) {
 
+  // -- Calendar
   // Determine the extent of the dates represented
   var datesExtent = d3.extent(csvData, function(d){ return new Date(d['UTC Date']); }),
 
@@ -69,9 +70,6 @@ d3.csv('data/eq-data.csv', function(csvData) {
       nested = d3.nest()
         .key(function(d){ return d3.time.month(d); })
         .entries(datesRange);
-
-
-
 
   // Build Calendar
   nested.forEach(function(month) {
@@ -106,12 +104,104 @@ d3.csv('data/eq-data.csv', function(csvData) {
         });
   });
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip({
-    placement: 'auto',
-    animation: false
+  // -- Event Handlers
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip({
+      placement: 'auto',
+      animation: false
+    });
   });
-});
+
+  // -- Summary Stats.
+  var totalEqs = csvData.length,
+      averageMag = ((data) => {
+        return parseFloat(
+                data
+                .map(d => { return parseFloat(d.Magnitude); })
+                .reduce((a, b) => { return a + b }) / data.length, 10);
+      })(csvData),
+      streak = ((allDates, quakeDates) => {
+        var contains = (item, arr) => { return arr.indexOf(item) !== -1; },
+            longest = 0, tmp = 0, from, to;
+
+        allDates.forEach((date, index) => {
+          if (! contains(date, quakeDates)) {
+            if (tmp > longest) {
+              from = allDates[index - tmp];
+              to = date;
+              longest = tmp;
+            }
+            tmp++;
+          }
+          else
+            tmp = 0;
+        });
+
+        return {value: longest, from: from, to: to};
+
+      })(datesRange.map(d => { return formatDate(d); }),
+        csvData.map(d => { return d['UTC Date']; }));
+
+  // add to the DOM
+  $('#total-eqs .value').html(totalEqs);
+  $('#streak .value').html(streak.value + ' ' + (streak.value > 1 ? 'days' : 'day'));
+  $('#streak .date').html(streak.from + ' to ' + streak.to);
+  $('#mags #average .value').html(averageMag.toPrecision(2));
+
+
+
+  // -- Graph
+  var values = csvData.map(eq => { return parseFloat(eq.Magnitude, 10); });
+  var formatCount = d3.format(",.0f");
+
+  var margin = {top: 10, right: 10, bottom: 20, left: 12},
+      width = 250 - margin.left - margin.right,
+      height = 120 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear()
+      .domain([0, 10])
+      .range([0, width]);
+
+  var data = d3.layout.histogram()
+    .bins(x.ticks(50))
+    (values);
+
+  var y = d3.scale.linear()
+    .domain([0, d3.max(data, function(d) { return d.y; })])
+    .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+  var svg = d3.select("#histogram").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var bar = svg.selectAll(".bar")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+  bar.append("rect")
+      .attr("x", 1)
+      .attr("width", x(data[0].dx) - 1)
+      .attr("height", function(d) { return height - y(d.y); });
+
+  /*bar.append("text")
+      .attr("dy", ".75em")
+      .attr("y", 6)
+      .attr("x", x(data[0].dx) / 2)
+      .attr("text-anchor", "middle")
+      .text(function(d) { return formatCount(d.y); });*/
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 });
 
 PubSub.subscribe('filter.update', (msg, data) => {

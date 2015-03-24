@@ -26,7 +26,42 @@
       <p>Data from March 2014 - March 2015
       <cite><a href="http://www.ga.gov.au/earthquakes/searchQuake.do">Geoscience Australia</a></cite>
       </p>
-      <div id="dates-container"></div>
+      <div id="graphics-container">
+        <!-- calendar goes here -->
+        <div id="dates-container"></div>
+
+        <!-- stats and graphs here -->
+        <div id="summary-stats">
+          <div id="total-eqs" class="summary">
+            <span class="value"></span>
+            <span class="desc">Total Number of Earthquakes</span>
+          </div>
+          <div id="streak" class="summary">
+            <span class="value"></span>
+            <span class="desc">Longest Streak without an Earthquake</span>
+            <span class="date"></span>
+          </div>
+          <div id="mags">
+            <div id="average" class="summary">
+              <span class="value"></span>
+              <span class="desc">Average Magnitude (mean)</span>
+            </div>
+            <!--<div id="min" class="summary">
+              <span class="value"></span>
+              <span class="desc"></span>
+
+            </div>
+            <div id="max" class="summary">
+              <span class="value"></span>
+              <span class="desc"></span>
+            </div>-->
+          </div>
+        </div>
+        <div id="histogram-container">
+          <div id="histogram"></div>
+          <span class="desc">Magintude Distribution</span>
+        </div>
+      </div>
   </header>
 
   <div id="filter" class="bg-white">
