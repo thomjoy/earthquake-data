@@ -87,16 +87,16 @@ cite a { color: #ffc1be; font-size: 14px; }
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #ffa19c;
-  border-right: 1px solid #ffa19c;
+  /*border-right: 1px solid #ffa19c;*/
 }
 .summary:last-child { border-bottom: none; }
-.summary .desc { display: block; font-family: 'PT Sans Narrow'; color: #ffa19c; }
+.summary .desc { font-size: 16px; display: block; font-family: 'PT Sans Narrow'; color: #ffc1be; }
 .summary .date { display: block; font-family: 'PT Sans Narrow'; color: #ffa19c; }
 .summary .value { display: block; font-family: 'Montserrat'; font-size: 48px; color: #fff; }
 
-#histogram-container { overflow: hidden; float: left; width: 25%; }
-#histogram-container .desc { padding-left: 10px; display: block; font-family: 'PT Sans Narrow'; color: #ffa19c; }
-#histogram { width: 100%; }
+#histogram-container { overflow: hidden; float: left; width: 25%; padding-left: 10px; }
+#histogram-container .desc { padding-left: 10px; display: block; font-family: 'PT Sans Narrow'; color: #690600; }
+#histogram { width: 100%; margin-top: 90px; }
 
 #filter { display: none; width: 100%; height: 45px; overflow: hidden; }
 #filter .container { width: 50%; float: left; padding: 10px 20px; }
@@ -136,18 +136,18 @@ cite a { color: #ffc1be; font-size: 14px; }
 .popup-mag { font-size: 21px; }
 
 .bar rect {
-  fill: #fff;
+  fill: #8b0700;
   shape-rendering: crispEdges;
 }
 
 .axis path, .axis line {
   fill: none;
-  stroke: #fff;
+  stroke: #8b0700;
   shape-rendering: crispEdges;
 }
 
 .axis text {
-  fill: #fff;
+  fill: #8b0700;
   font-family: 'PT Sans Narrow';
   font-size: 10px;
 }

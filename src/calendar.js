@@ -154,8 +154,8 @@ d3.csv('data/eq-data.csv', function(csvData) {
   var values = csvData.map(eq => { return parseFloat(eq.Magnitude, 10); });
   var formatCount = d3.format(",.0f");
 
-  var margin = {top: 10, right: 10, bottom: 20, left: 12},
-      width = 250 - margin.left - margin.right,
+  var margin = {top: 15, right: 10, bottom: 20, left: 12},
+      width = 280 - margin.left - margin.right,
       height = 120 - margin.top - margin.bottom;
 
   var x = d3.scale.linear()
